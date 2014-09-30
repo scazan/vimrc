@@ -3,7 +3,6 @@
 " including his comments
 colorscheme molokai
 set foldmethod=syntax
-set relativenumber
 
 " set the swapfile and undo directory
 set backupdir=~/.vimswap//
@@ -117,7 +116,7 @@ set undoreload=10000        " Maximum number lines to save for undo on a buffer 
 
 	set backspace=indent,eol,start  " Backspace for dummies
 	set linespace=0                 " No extra spaces between rows
-	set nu                          " Line numbers on
+	set relativenumber
 	set showmatch                   " Show matching brackets/parenthesis
 	set incsearch                   " Find as you type search
 	set hlsearch                    " Highlight search terms
