@@ -1,8 +1,6 @@
 " .vimrc for Scott Cazan. 
 " A good chunk cannibalized from spf-13 (https://github.com/spf13/spf13-vim)
 " including his comments
-colorscheme molokai
-set foldmethod=syntax
 
 " set the swapfile and undo directory
 set backupdir=~/.vimswap//
@@ -21,7 +19,9 @@ set t_Co=256            " Enable 256 colors to stop the CSApprox warning and mak
 	call vundle#begin()
 
 	" let Vundle manage Vundle, required
+	Plugin 'scvim'
 	Plugin 'gmarik/Vundle.vim'
+	Plugin 'vim-sftp-sync'
 	Plugin 'tpope/vim-fugitive'
 	Plugin 'bling/vim-airline'
 	Plugin 'kien/ctrlp.vim'
@@ -95,6 +95,9 @@ set undolevels=1000         " Maximum number of changes that can be undone
 set undoreload=10000        " Maximum number lines to save for undo on a buffer reload
 
 " Vim UI {
+	colorscheme molokai
+	set foldmethod=syntax
+
 	set tabpagemax=15               " Only show 15 tabs
 	set showmode                    " Display the current mode
 
@@ -104,6 +107,7 @@ set undoreload=10000        " Maximum number lines to save for undo on a buffer 
 	set showcmd                 " Show partial commands in status line and
 
 
+	" Show the airline status bar on load
 	set laststatus=2
 	" Broken down into easily includeable segments
 	set statusline=%<%f\                     " Filename
@@ -146,7 +150,8 @@ set undoreload=10000        " Maximum number lines to save for undo on a buffer 
     set splitright                  " Puts new vsplit windows to the right of the current
     set splitbelow                  " Puts new split windows to the bottom of the current
     set pastetoggle=<F12>           " pastetoggle (sane indentation on pastes)
-    autocmd FileType c,cpp,java,go,php,javascript,python,twig,xml,yml autocmd BufWritePre <buffer> if !exists('g:spf13_keep_trailing_whitespace') | call StripTrailingWhitespace() | endif
+    "autocmd FileType c,cpp,java,go,php,javascript,python,twig,xml,yml 
+	"autocmd BufWritePre <buffer> if !exists('g:spf13_keep_trailing_whitespace') | call StripTrailingWhitespace() | endif
     autocmd BufNewFile,BufRead *.html.twig set filetype=html.twig
     autocmd FileType haskell setlocal expandtab shiftwidth=2 softtabstop=2
 
