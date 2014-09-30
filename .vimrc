@@ -165,6 +165,9 @@ set undoreload=10000        " Maximum number lines to save for undo on a buffer 
 "	"Remap space to command mode
 	map <space> :
 
+	"NerdTree toggle
+	map <C-e> :NERDTreeToggle<CR>
+
 	" Easier motion for switching between splits (Ctrl-motion)
 	let mapleader = ','
 	map <C-J> <C-W>j<C-W>_
