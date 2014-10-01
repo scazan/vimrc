@@ -8,7 +8,9 @@ set undodir=~/.vimundo//
 set directory=~/.vimswap//
 
 set guifont=Liberation\ Mono\ for\ Powerline\ 10 
+
 set t_Co=256            " Enable 256 colors to stop the CSApprox warning and make xterm vim shine
+set term=xterm-256color
 
 " Bundles {
 	set nocompatible              " be iMproved, required
@@ -36,6 +38,7 @@ set t_Co=256            " Enable 256 colors to stop the CSApprox warning and mak
 	Plugin 'hail2u/vim-css3-syntax'
 	Plugin 'gorodinskiy/vim-coloresque'
 	Plugin 'heavenshell/vim-jsdoc'
+	Plugin 'Shougo/neocomplcache.vim'
 
 	" All of your Plugins must be added before the following line
 	call vundle#end()            " required
@@ -108,7 +111,7 @@ set undoreload=10000        " Maximum number lines to save for undo on a buffer 
 
 
 	" Show the airline status bar on load
-	set laststatus=2
+	"set laststatus=2
 	" Broken down into easily includeable segments
 	set statusline=%<%f\                     " Filename
 	set statusline+=%w%h%m%r                 " Options
@@ -132,7 +135,7 @@ set undoreload=10000        " Maximum number lines to save for undo on a buffer 
 	set whichwrap=b,s,h,l,<,>,[,]   " Backspace and cursor keys wrap too
 	set scrolljump=5                " Lines to scroll when cursor leaves screen
 	set scrolloff=3                 " Minimum lines to keep above and below cursor
-	set foldenable                  " Auto fold code
+	"set foldenable                  " Auto fold code
 	set list
 	set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
 " }
@@ -262,6 +265,9 @@ set undoreload=10000        " Maximum number lines to save for undo on a buffer 
 	let g:airline_symbols.paste = 'Þ'
 	let g:airline_symbols.paste = '∥'
 	let g:airline_symbols.whitespace = 'Ξ'
+" }
+" neocomplcache {
+	let g:neocomplcache_enable_at_startup = 1
 " }
 
 " Shell command {
