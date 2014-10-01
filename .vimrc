@@ -21,9 +21,9 @@ set term=xterm-256color
 	call vundle#begin()
 
 	" let Vundle manage Vundle, required
-	Plugin 'scvim'
+	"Plugin 'scvim'
+	"Plugin 'vim-sftp-sync'
 	Plugin 'gmarik/Vundle.vim'
-	Plugin 'vim-sftp-sync'
 	Plugin 'tpope/vim-fugitive'
 	Plugin 'bling/vim-airline'
 	Plugin 'kien/ctrlp.vim'
@@ -39,6 +39,9 @@ set term=xterm-256color
 	Plugin 'gorodinskiy/vim-coloresque'
 	Plugin 'heavenshell/vim-jsdoc'
 	Plugin 'Shougo/neocomplcache.vim'
+	"Plugin 'majutsushi/tagbar'
+	"Plugin 'int3/vim-taglist-plus'
+	"Plugin 'marijnh/tern_for_vim'
 
 	" All of your Plugins must be added before the following line
 	call vundle#end()            " required
@@ -165,6 +168,8 @@ set undoreload=10000        " Maximum number lines to save for undo on a buffer 
     " Workaround broken colour highlighting in Haskell
     autocmd FileType haskell setlocal nospell
 
+	"Don't ignore dots when selecting entire words
+	set iskeyword-=.
 " }
 
 
