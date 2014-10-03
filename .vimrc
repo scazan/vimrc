@@ -21,8 +21,8 @@ set term=xterm-256color
 	call vundle#begin()
 
 	" let Vundle manage Vundle, required
-	"Plugin 'scvim'
-	"Plugin 'vim-sftp-sync'
+	Plugin 'scvim'
+	Plugin 'vim-sftp-sync'
 	Plugin 'gmarik/Vundle.vim'
 	Plugin 'tpope/vim-fugitive'
 	Plugin 'bling/vim-airline'
@@ -41,7 +41,7 @@ set term=xterm-256color
 	Plugin 'Shougo/neocomplcache.vim'
 	"Plugin 'majutsushi/tagbar'
 	"Plugin 'int3/vim-taglist-plus'
-	"Plugin 'marijnh/tern_for_vim'
+	Plugin 'marijnh/tern_for_vim'
 
 	" All of your Plugins must be added before the following line
 	call vundle#end()            " required
