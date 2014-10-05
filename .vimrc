@@ -55,6 +55,8 @@ filetype plugin indent on   " Automatically detect file types.
 syntax on                   " Syntax highlighting
 set mouse=a                 " Automatically enable mouse usage
 set mousehide               " Hide the mouse cursor while typing
+set ttimeout
+set ttimeoutlen=100
 
 scriptencoding utf-8
 
