@@ -39,9 +39,9 @@ set term=xterm-256color
 	Plugin 'gorodinskiy/vim-coloresque'
 	Plugin 'heavenshell/vim-jsdoc'
 	Plugin 'Shougo/neocomplcache.vim'
-	"Plugin 'majutsushi/tagbar'
+	Plugin 'majutsushi/tagbar'
 	"Plugin 'int3/vim-taglist-plus'
-	Plugin 'marijnh/tern_for_vim'
+	"Plugin 'marijnh/tern_for_vim'
 
 	" All of your Plugins must be added before the following line
 	call vundle#end()            " required
