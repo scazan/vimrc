@@ -25,6 +25,7 @@ set term=xterm-256color
 	Plugin 'vim-sftp-sync'
 	Plugin 'gmarik/Vundle.vim'
 	Plugin 'tpope/vim-fugitive'
+	Plugin 'airblade/vim-gitgutter'
 	Plugin 'bling/vim-airline'
 	Plugin 'kien/ctrlp.vim'
 	Plugin 'mileszs/ack.vim'
