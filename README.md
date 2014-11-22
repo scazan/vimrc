@@ -24,6 +24,11 @@ ln -s ~/.vimrc ~/.vimgit/.vimrc
 
 <em>Note that if you cloned into a different directory than I did here (in my case ~/.vimgit) you will need to point to that location instead when creating the symbolic link.</em>
 
+Create a few needed directories and also create an empty "extra config options" file for yourself by running this:
+```
+mkdir ~/.vimswap && mkdir ~/.vimundo && ~/.vimrc.config
+```
+
 If this is the first time I'm installing this then I need to make sure to run BundleInstall to get all those packages downloaded.
 Startup vim then execute this:
 ```
