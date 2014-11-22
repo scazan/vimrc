@@ -19,7 +19,7 @@ git clone https://github.com/scazan/vimrc.git ~/.vimgit
 
 Then I create a symbolic link in my home directory to the file I just downloaded:
 ```
-ln -s .vimrc ./git/vimgit/.vimrc
+ln -s ~/.vimrc ~/.vimgit/.vimrc
 ```
 
 If this is the first time I'm installing this then I need to make sure to run BundleInstall to get all those packages downloaded.
