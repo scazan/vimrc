@@ -22,6 +22,8 @@ Then I create a symbolic link in my home directory to the file I just downloaded
 ln -s ~/.vimrc ~/.vimgit/.vimrc
 ```
 
+<em>Note that if you cloned into a different directory than I did here (in my case ~/.vimgit) you will need to point to that location instead when creating the symbolic link.</em>
+
 If this is the first time I'm installing this then I need to make sure to run BundleInstall to get all those packages downloaded.
 Startup vim then execute this:
 ```
