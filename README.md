@@ -26,7 +26,7 @@ ln -s ~/.vimgit/.vimrc ~/.vimrc
 
 Create a few needed directories and also create an empty "extra config options" file for yourself by running this:
 ```
-mkdir ~/.vimswap && mkdir ~/.vimundo && ~/.vimrc.config
+mkdir ~/.vimswap && mkdir ~/.vimundo && touch ~/.vimrc.config
 ```
 
 If this is the first time I'm installing this then I need to make sure to run BundleInstall to get all those packages downloaded.
