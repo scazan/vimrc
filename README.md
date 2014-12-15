@@ -19,7 +19,7 @@ git clone https://github.com/scazan/vimrc.git ~/.vimgit
 
 Then I create a symbolic link in my home directory to the file I just downloaded:
 ```
-ln -s ~/.vimrc ~/.vimgit/.vimrc
+ln -s ~/.vimgit/.vimrc ~/.vimrc
 ```
 
 <em>Note that if you cloned into a different directory than I did here (in my case ~/.vimgit) you will need to point to that location instead when creating the symbolic link.</em>
