@@ -22,6 +22,7 @@ set term=xterm-256color
 
 	" let Vundle manage Vundle, required
 	Plugin 'scvim'
+	Plugin 'elzr/vim-json'
 	Plugin 'vim-sftp-sync'
 	Plugin 'gmarik/Vundle.vim'
 	Plugin 'tpope/vim-fugitive'
