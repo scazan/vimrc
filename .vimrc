@@ -172,8 +172,6 @@ set undoreload=10000        " Maximum number lines to save for undo on a buffer 
     " Workaround broken colour highlighting in Haskell
     autocmd FileType haskell setlocal nospell
 
-	"Don't ignore dots when selecting entire words
-	set iskeyword-=.
 " }
 
 
