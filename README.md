@@ -3,15 +3,16 @@ vimrc
 
 My current .vimrc.
 
-Install Vundle first (https://github.com/gmarik/Vundle.vim)
+Requirements
+-------------
+Vundle (https://github.com/gmarik/Vundle.vim)
 
 Add, at least, these two directories: ~/.vimswap ~/.vimundo
 
-Then (in Vim) run :BundleInstall to install all the plugins.
-
-
 Setup
 -------------------
+Make sure you install Vundle first. Instructions here: https://github.com/gmarik/Vundle.vim
+
 I like to keep the git repository itself in a separate directory so first I clone this repository to a sub directory of my home folder:
 ```
 git clone https://github.com/scazan/vimrc.git ~/.vimgit
