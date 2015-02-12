@@ -31,7 +31,7 @@ mkdir ~/.vimswap && mkdir ~/.vimundo && touch ~/.vimrc.config
 ```
 
 If this is the first time I'm installing this then I need to make sure to run BundleInstall to get all those packages downloaded.
-Startup vim then execute this:
+Startup vim then execute this inside of vim:
 ```
 :BundleInstall
 ```
