@@ -36,14 +36,12 @@ set term=xterm-256color
 	Plugin 'scrooloose/nerdtree'
 	Plugin 'scrooloose/nerdcommenter'
 	Plugin 'pangloss/vim-javascript'
-	Plugin 'amirh/HTML-AutoCloseTag'
 	Plugin 'hail2u/vim-css3-syntax'
 	Plugin 'gorodinskiy/vim-coloresque'
 	Plugin 'heavenshell/vim-jsdoc'
-	Plugin 'Shougo/neocomplcache.vim'
-	Plugin 'majutsushi/tagbar'
-	"Plugin 'int3/vim-taglist-plus'
-	"Plugin 'marijnh/tern_for_vim'
+	Plugin 'Valloric/YouCompleteMe'
+	Plugin 'sirver/ultisnips'
+	Plugin 'honza/vim-snippets'
 
 	" All of your Plugins must be added before the following line
 	call vundle#end()            " required
@@ -160,6 +158,7 @@ set undoreload=10000        " Maximum number lines to save for undo on a buffer 
     set splitright                  " Puts new vsplit windows to the right of the current
     set splitbelow                  " Puts new split windows to the bottom of the current
     set pastetoggle=<F12>           " pastetoggle (sane indentation on pastes)
+	set iskeyword-=.				" periods delimit words
     "autocmd FileType c,cpp,java,go,php,javascript,python,twig,xml,yml 
 	"autocmd BufWritePre <buffer> if !exists('g:spf13_keep_trailing_whitespace') | call StripTrailingWhitespace() | endif
     autocmd BufNewFile,BufRead *.html.twig set filetype=html.twig
