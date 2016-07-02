@@ -26,7 +26,7 @@ set term=xterm-256color
 	Plugin 'eshion/vim-sync'
 	Plugin 'gmarik/Vundle.vim'
 	Plugin 'tpope/vim-fugitive'
-	Plugin 'airblade/vim-gitgutter'
+	"Plugin 'airblade/vim-gitgutter'
 	Plugin 'bling/vim-airline'
 	Plugin 'kien/ctrlp.vim'
 	Plugin 'mileszs/ack.vim'
@@ -103,7 +103,8 @@ set undolevels=1000         " Maximum number of changes that can be undone
 set undoreload=10000        " Maximum number lines to save for undo on a buffer reload
 
 " Vim UI {
-	colorscheme molokai
+	"colorscheme molokai
+	colorscheme nofrils-supercollider
 	set foldmethod=syntax
 
 	set tabpagemax=15               " Only show 15 tabs
@@ -244,7 +245,8 @@ set undoreload=10000        " Maximum number lines to save for undo on a buffer 
 	let g:airline_powerline_fonts = 1
 
 	"let g:airline_theme = 'solarized'
-	let g:airline_theme = 'powerlineish'
+	let g:airline_theme = 'lucius'
+	"let g:airline_theme = 'powerlineish'
 	"let g:airline_theme = 'molokai'
 
 	if !exists('g:airline_powerline_fonts')
@@ -300,6 +302,7 @@ set undoreload=10000        " Maximum number lines to save for undo on a buffer 
 " }
 "
 "
+set iskeyword-=.				" periods delimit words
 " source an external file for additional config
 if filereadable(expand("~/.vimrc.config"))
 	source ~/.vimrc.config
