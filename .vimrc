@@ -23,10 +23,9 @@ set term=xterm-256color
 	" let Vundle manage Vundle, required
 	Plugin 'scvim'
 	Plugin 'elzr/vim-json'
-	Plugin 'eshion/vim-sync'
 	Plugin 'gmarik/Vundle.vim'
 	Plugin 'tpope/vim-fugitive'
-	"Plugin 'airblade/vim-gitgutter'
+	Plugin 'airblade/vim-gitgutter'
 	Plugin 'bling/vim-airline'
 	Plugin 'kien/ctrlp.vim'
 	Plugin 'mileszs/ack.vim'
@@ -36,10 +35,12 @@ set term=xterm-256color
 	Plugin 'scrooloose/nerdtree'
 	Plugin 'scrooloose/nerdcommenter'
 	Plugin 'pangloss/vim-javascript'
+  Plugin 'Quramy/tsuquyomi'
+  Plugin 'Shougo/vimproc.vim'
 	Plugin 'hail2u/vim-css3-syntax'
 	Plugin 'gorodinskiy/vim-coloresque'
-	Plugin 'heavenshell/vim-jsdoc'
-	Plugin 'Valloric/YouCompleteMe'
+	"Plugin 'heavenshell/vim-jsdoc'
+  Plugin 'Valloric/YouCompleteMe'
 	Plugin 'sirver/ultisnips'
 	Plugin 'honza/vim-snippets'
 
@@ -151,15 +152,16 @@ set undoreload=10000        " Maximum number lines to save for undo on a buffer 
 
     set nowrap                      " Do not wrap long lines
     set autoindent                  " Indent at the same level of the previous line
-    set shiftwidth=4                " Use indents of 4 spaces
-    set noexpandtab                   " Tabs are spaces, not tabs
-    set tabstop=4                   " An indentation every four columns
+    set shiftwidth=2                " Use indents of 4 spaces
+    set expandtab                   " Tabs are spaces, not tabs
+    set tabstop=2                   " An indentation every four columns
     set softtabstop=4               " Let backspace delete indent
     set nojoinspaces                " Prevents inserting two spaces after punctuation on a join (J)
     set splitright                  " Puts new vsplit windows to the right of the current
     set splitbelow                  " Puts new split windows to the bottom of the current
     set pastetoggle=<F12>           " pastetoggle (sane indentation on pastes)
-	set iskeyword-=.				" periods delimit words
+	"set iskeyword-=.				" periods delimit words
+	set ai
     "autocmd FileType c,cpp,java,go,php,javascript,python,twig,xml,yml 
 	"autocmd BufWritePre <buffer> if !exists('g:spf13_keep_trailing_whitespace') | call StripTrailingWhitespace() | endif
     autocmd BufNewFile,BufRead *.html.twig set filetype=html.twig
@@ -302,6 +304,8 @@ set undoreload=10000        " Maximum number lines to save for undo on a buffer 
 " }
 "
 "
+"
+"let g:sclangTerm="tmux split-window -v -p 20"
 set iskeyword-=.				" periods delimit words
 " source an external file for additional config
 if filereadable(expand("~/.vimrc.config"))
