@@ -38,3 +38,5 @@ Startup vim then execute this inside of vim:
 
 Once it finishes exit vim (:q) and startup vim again. 
 You should be all set to go at that point.
+
+OR JUST RUN THE INSTALL SCRIPT
