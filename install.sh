@@ -1,6 +1,6 @@
 #!/bin/bash
 
-ln -s ~/.vimgit/.vimrc ~/.vimrc
+ln -s ~/dev/vimrc/.vimrc ~/.vimrc
 
 mkdir ~/.vimswap && mkdir ~/.vimundo && touch ~/.vimrc.config
 
