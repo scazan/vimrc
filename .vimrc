@@ -10,7 +10,7 @@ set directory=~/.vimswap//
 set guifont=Liberation\ Mono\ for\ Powerline\ 10 
 
 set t_Co=256            " Enable 256 colors to stop the CSApprox warning and make xterm vim shine
-set term=xterm-256color
+" set term=xterm-256color
 
 " Bundles {
 	set nocompatible              " be iMproved, required
@@ -31,6 +31,7 @@ set term=xterm-256color
 	Plugin 'mileszs/ack.vim'
 	Plugin 'terryma/vim-multiple-cursors'
 	Plugin 'flazz/vim-colorschemes'
+	Plugin 'vim-airline/vim-airline-themes'
 	Plugin 'tpope/vim-surround'
 	Plugin 'scrooloose/nerdtree'
 	Plugin 'scrooloose/nerdcommenter'
@@ -43,6 +44,9 @@ set term=xterm-256color
   Plugin 'Valloric/YouCompleteMe'
 	Plugin 'sirver/ultisnips'
 	Plugin 'honza/vim-snippets'
+  Plugin 'w0rp/ale'
+  Plugin 'heavenshell/vim-jsdoc'
+  Plugin 'vim-syntastic/syntastic'
 
 	" All of your Plugins must be added before the following line
 	call vundle#end()            " required
@@ -104,8 +108,8 @@ set undolevels=1000         " Maximum number of changes that can be undone
 set undoreload=10000        " Maximum number lines to save for undo on a buffer reload
 
 " Vim UI {
-	"colorscheme molokai
-	colorscheme nofrils-supercollider
+  colorscheme molokai
+	" colorscheme nofrils-supercollider
 	set foldmethod=syntax
 
 	set tabpagemax=15               " Only show 15 tabs
@@ -276,6 +280,8 @@ set undoreload=10000        " Maximum number lines to save for undo on a buffer 
 	let g:airline_symbols.paste = '∥'
 	let g:airline_symbols.whitespace = 'Ξ'
 " }
+ let g:airline#extensions#ale#enabled = 1
+
 " neocomplcache {
 	let g:neocomplcache_enable_at_startup = 1
 " }
@@ -303,8 +309,31 @@ set undoreload=10000        " Maximum number lines to save for undo on a buffer 
 	" e.g. Grep current file for <search_term>: Shell grep -Hn <search_term> %
 " }
 "
+inoremap <Tab> <c-r>=UltiSnips#ExpandSnippet()<cr>
+"" YouCompleteMe
+let g:ycm_key_list_previous_completion=['<Up>']
+
+"" Ultisnips
+let g:UltiSnipsExpandTrigger="<c-tab>"
+let g:UltiSnipsListSnippets="<c-s-tab>"
 "
-"
+"Linting with ALE
+"let g:ale_javascript_eslint_executable = 'npm run eslint'
+let b:ale_fixers = ['eslint']
+let b:ale_linters = ['eslint']
+let g:ale_fixers = ['eslint']
+" let g:ale_linters = ['eslint']
+let g:ale_sign_error = '•'
+let g:ale_sign_warning = '•'
+let g:ale_set_highlights = 1
+" let g:ale_echo_cursor = 0
+" let g:ale_lint_on_save = 1
+let g:ale_lint_on_text_changed = 1
+" let g:ale_open_list = 1
+
+let NERDSpaceDelims=1
+nmap <silent> <C-l> <Plug>(jsdoc)
+
 "let g:sclangTerm="tmux split-window -v -p 20"
 set iskeyword-=.				" periods delimit words
 " source an external file for additional config
