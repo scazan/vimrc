@@ -42,11 +42,17 @@ set t_Co=256            " Enable 256 colors to stop the CSApprox warning and mak
 	Plugin 'hail2u/vim-css3-syntax'
 	Plugin 'gorodinskiy/vim-coloresque'
   Plugin 'Valloric/YouCompleteMe'
-	Plugin 'sirver/ultisnips'
-	Plugin 'honza/vim-snippets'
+  " Plugin 'Shougo/deoplete.nvim'
+	" Plugin 'sirver/ultisnips'
+	" Plugin 'honza/vim-snippets'
+  " Plugin 'jakedouglas/exuberant-ctags'
+  Plugin 'xolox/vim-easytags'
+  Plugin 'xolox/vim-misc'
   Plugin 'w0rp/ale'
   Plugin 'heavenshell/vim-jsdoc'
   Plugin 'vim-syntastic/syntastic'
+  Plugin 'vim-scripts/Color-Scheme-Explorer'
+  Plugin 'carlosrocha/vim-chrome-devtools'
 
 	" All of your Plugins must be added before the following line
 	call vundle#end()            " required
@@ -108,7 +114,8 @@ set undolevels=1000         " Maximum number of changes that can be undone
 set undoreload=10000        " Maximum number lines to save for undo on a buffer reload
 
 " Vim UI {
-  colorscheme molokai
+  " colorscheme molokai
+  colorscheme wolfpack
 	" colorscheme nofrils-supercollider
 	set foldmethod=syntax
 
