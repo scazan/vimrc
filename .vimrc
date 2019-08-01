@@ -25,7 +25,7 @@ set t_Co=256            " Enable 256 colors to stop the CSApprox warning and mak
 	Plugin 'elzr/vim-json'
 	Plugin 'gmarik/Vundle.vim'
 	Plugin 'tpope/vim-fugitive'
-	Plugin 'airblade/vim-gitgutter'
+	" Plugin 'airblade/vim-gitgutter'
 	Plugin 'bling/vim-airline'
 	Plugin 'kien/ctrlp.vim'
 	Plugin 'mileszs/ack.vim'
@@ -53,6 +53,9 @@ set t_Co=256            " Enable 256 colors to stop the CSApprox warning and mak
   Plugin 'vim-syntastic/syntastic'
   Plugin 'vim-scripts/Color-Scheme-Explorer'
   Plugin 'carlosrocha/vim-chrome-devtools'
+  Plugin 'maxmellon/vim-jsx-pretty'
+  Plugin 'ternjs/tern_for_vim'
+  Plugin 'davidgranstrom/scnvim'
 
 	" All of your Plugins must be added before the following line
 	call vundle#end()            " required
@@ -126,7 +129,7 @@ set undoreload=10000        " Maximum number lines to save for undo on a buffer 
 	set ruler                   " Show the ruler
 	set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%) " A ruler on steroids
 	set showcmd                 " Show partial commands in status line and
-
+  hi Normal guibg=NONE ctermbg=NONE     " Transparent background
 
 	" Show the airline status bar on load
 	"set laststatus=2
@@ -320,6 +323,16 @@ inoremap <Tab> <c-r>=UltiSnips#ExpandSnippet()<cr>
 "" YouCompleteMe
 let g:ycm_key_list_previous_completion=['<Up>']
 
+" easytags {
+let g:easytags_languages = {
+\   'javascript': {
+\     'cmd': 'jsctags',
+\     'args': ['-f'],
+\     'recurse_flag': ''
+\   }
+\}
+" " }
+
 "" Ultisnips
 let g:UltiSnipsExpandTrigger="<c-tab>"
 let g:UltiSnipsListSnippets="<c-s-tab>"
@@ -347,4 +360,6 @@ set iskeyword-=.				" periods delimit words
 if filereadable(expand("~/.vimrc.config"))
 	source ~/.vimrc.config
 endif
+
+set noswapfile
 
