@@ -9,4 +9,6 @@ curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
 
 cp ./other/init.vim /home/scott/.config/nvim/init.vim
 
+sudo apt-get install exuberant-ctags
+
 nvim -c PlugInstall -c qall
