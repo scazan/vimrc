@@ -1,6 +1,4 @@
 " .vimrc for Scott Cazan. 
-" A good chunk cannibalized from spf-13 (https://github.com/spf13/spf13-vim)
-" including his comments
 
 " set the swapfile and undo directory
 set backupdir=~/.vimswap//
@@ -16,49 +14,58 @@ set t_Co=256            " Enable 256 colors to stop the CSApprox warning and mak
 	set nocompatible              " be iMproved, required
 	filetype off                  " required
 
-	" set the runtime path to include Vundle and initialize
-	set rtp+=~/.vim/bundle/Vundle.vim
-	call vundle#begin()
+  call plug#begin('~/.vim/plugged')
+	" Plug 'scvim'
+	Plug 'elzr/vim-json'
+	Plug 'tpope/vim-fugitive'
+	" Plug 'airblade/vim-gitgutter'
+	Plug 'bling/vim-airline'
+	Plug 'kien/ctrlp.vim'
+	Plug 'mileszs/ack.vim'
+	Plug 'terryma/vim-multiple-cursors'
+	Plug 'flazz/vim-colorschemes'
+	Plug 'vim-airline/vim-airline-themes'
+	Plug 'tpope/vim-surround'
+	Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+	Plug 'scrooloose/nerdcommenter'
+	Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'typescript'] }
+  Plug 'leafgarland/typescript-vim', { 'for': ['javascript', 'typescript'] }
+  Plug 'jremmen/vim-ripgrep'
+  " Plug 'Quramy/tsuquyomi'
+  Plug 'Shougo/vimproc.vim'
+	Plug 'hail2u/vim-css3-syntax'
+	Plug 'gorodinskiy/vim-coloresque'
+  function! BuildYCM(info)
+    if a:info.status == 'installed' || a:info.force
+      !./install.sh
+    endif
+  endfunction
+  " Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
+  " Plug 'Shougo/deoplete.nvim'
+  " Plug 'sirver/ultisnips'
+  " Plug 'honza/vim-snippets'
+  " Plug 'jakedouglas/exuberant-ctags'
+  Plug 'xolox/vim-easytags'
+  Plug 'xolox/vim-misc'
+  Plug 'heavenshell/vim-jsdoc'
+  Plug 'vim-syntastic/syntastic'
+  Plug 'vim-scripts/Color-Scheme-Explorer'
+  " Plug 'carlosrocha/vim-chrome-devtools'
+  Plug 'maxmellon/vim-jsx-pretty'
+  function! BuildTern(info)
+    if a:info.status == 'installed' || a:info.force
+      !npm install
+    endif
+  endfunction
+  Plug 'marijnh/tern_for_vim', { 'do': function('BuildTern') }
+  Plug 'davidgranstrom/scnvim'
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  Plug 'rust-lang/rust.vim'
 
-	" let Vundle manage Vundle, required
-	Plugin 'scvim'
-	Plugin 'elzr/vim-json'
-	Plugin 'gmarik/Vundle.vim'
-	Plugin 'tpope/vim-fugitive'
-	" Plugin 'airblade/vim-gitgutter'
-	Plugin 'bling/vim-airline'
-	Plugin 'kien/ctrlp.vim'
-	Plugin 'mileszs/ack.vim'
-	Plugin 'terryma/vim-multiple-cursors'
-	Plugin 'flazz/vim-colorschemes'
-	Plugin 'vim-airline/vim-airline-themes'
-	Plugin 'tpope/vim-surround'
-	Plugin 'scrooloose/nerdtree'
-	Plugin 'scrooloose/nerdcommenter'
-	Plugin 'pangloss/vim-javascript'
-  Plugin 'leafgarland/typescript-vim'
-  Plugin 'Quramy/tsuquyomi'
-  Plugin 'Shougo/vimproc.vim'
-	Plugin 'hail2u/vim-css3-syntax'
-	Plugin 'gorodinskiy/vim-coloresque'
-  Plugin 'Valloric/YouCompleteMe'
-  " Plugin 'Shougo/deoplete.nvim'
-	" Plugin 'sirver/ultisnips'
-	" Plugin 'honza/vim-snippets'
-  " Plugin 'jakedouglas/exuberant-ctags'
-  Plugin 'xolox/vim-easytags'
-  Plugin 'xolox/vim-misc'
-  Plugin 'w0rp/ale'
-  Plugin 'heavenshell/vim-jsdoc'
-  Plugin 'vim-syntastic/syntastic'
-  Plugin 'vim-scripts/Color-Scheme-Explorer'
-  Plugin 'carlosrocha/vim-chrome-devtools'
-  Plugin 'maxmellon/vim-jsx-pretty'
-  Plugin 'ternjs/tern_for_vim'
-  Plugin 'davidgranstrom/scnvim'
+  call plug#end()
 
-	" All of your Plugins must be added before the following line
-	call vundle#end()            " required
+
+
 	filetype plugin indent on    " required
 " }
 
@@ -234,6 +241,46 @@ set undoreload=10000        " Maximum number lines to save for undo on a buffer 
     cmap w!! w !sudo tee % >/dev/null
 " }
 
+
+" coc.nvim
+" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+
+" Remap for do codeAction of current line
+nmap <leader>ac  <Plug>(coc-codeaction)
+" Fix autofix problem of current line
+nmap <leader>qf  <Plug>(coc-fix-current)
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" Better display for messages
+set cmdheight=2
+
+" always show signcolumns
+set signcolumn=yes
+
+" Add status line support, for integration with other plugin, checkout `:h coc-status`
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+" end coc.nvim
+
+" Highlight symbol under cursor on CursorHold
+autocmd CursorHold * silent call CocActionAsync('highlight')
+" Use K to show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
 " ctrlp {
 	let g:ctrlp_working_path_mode = 'ra'
 	nnoremap <silent> <D-t> :CtrlP<CR>
@@ -290,7 +337,6 @@ set undoreload=10000        " Maximum number lines to save for undo on a buffer 
 	let g:airline_symbols.paste = '∥'
 	let g:airline_symbols.whitespace = 'Ξ'
 " }
- let g:airline#extensions#ale#enabled = 1
 
 " neocomplcache {
 	let g:neocomplcache_enable_at_startup = 1
@@ -336,23 +382,12 @@ let g:easytags_languages = {
 "" Ultisnips
 let g:UltiSnipsExpandTrigger="<c-tab>"
 let g:UltiSnipsListSnippets="<c-s-tab>"
+let g:UltiSnipsSnippetDirectories = ['UltiSnips', 'scnvim-data']
 "
-"Linting with ALE
-"let g:ale_javascript_eslint_executable = 'npm run eslint'
-let b:ale_fixers = ['eslint']
-let b:ale_linters = ['eslint']
-let g:ale_fixers = ['eslint']
-" let g:ale_linters = ['eslint']
-let g:ale_sign_error = '•'
-let g:ale_sign_warning = '•'
-let g:ale_set_highlights = 1
-" let g:ale_echo_cursor = 0
-" let g:ale_lint_on_save = 1
-let g:ale_lint_on_text_changed = 1
-" let g:ale_open_list = 1
 
 let NERDSpaceDelims=1
-nmap <silent> <C-l> <Plug>(jsdoc)
+" jsdoc keymapping (but overrides history browsing)
+" nmap <silent> <C-l> <Plug>(jsdoc)
 
 "let g:sclangTerm="tmux split-window -v -p 20"
 set iskeyword-=.				" periods delimit words
