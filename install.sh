@@ -9,4 +9,4 @@ curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
 
 cp ./other/init.vim /home/scott/.config/nvim/init.vim
 
-nvim -c BundleInstall -c qall
+nvim -c PlugInstall -c qall
