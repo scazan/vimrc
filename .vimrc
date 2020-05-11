@@ -26,7 +26,6 @@ set t_Co=256            " Enable 256 colors to stop the CSApprox warning and mak
 	Plug 'flazz/vim-colorschemes'
 	Plug 'vim-airline/vim-airline-themes'
 	Plug 'tpope/vim-surround'
-	Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 	Plug 'scrooloose/nerdcommenter'
 	Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'typescript'] }
   Plug 'leafgarland/typescript-vim', { 'for': ['javascript', 'typescript'] }
@@ -203,7 +202,7 @@ set undoreload=10000        " Maximum number lines to save for undo on a buffer 
 	map <space> :
 
 	"NerdTree toggle
-	map <C-e> :NERDTreeToggle<CR>
+	map <C-e> :Vex<CR>
 
 	" Easier motion for switching between splits (Ctrl-motion)
 	let mapleader = ','
@@ -378,6 +377,13 @@ let g:easytags_languages = {
 \   }
 \}
 " " }
+
+" netrw
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+let g:netrw_browse_split = 4
+let g:netrw_altv = 1
+let g:netrw_winsize = 25
 
 "" Ultisnips
 let g:UltiSnipsExpandTrigger="<c-tab>"
