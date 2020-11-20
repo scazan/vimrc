@@ -60,6 +60,7 @@ set t_Co=256            " Enable 256 colors to stop the CSApprox warning and mak
   Plug 'davidgranstrom/scnvim'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'rust-lang/rust.vim'
+  Plug 'mattn/vim-xxdcursor'
 
   call plug#end()
 
