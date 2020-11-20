@@ -34,6 +34,7 @@ set t_Co=256            " Enable 256 colors to stop the CSApprox warning and mak
   Plug 'Shougo/vimproc.vim'
 	Plug 'hail2u/vim-css3-syntax'
 	Plug 'gorodinskiy/vim-coloresque'
+  Plug 'sheerun/vim-polyglot'
   function! BuildYCM(info)
     if a:info.status == 'installed' || a:info.force
       !./install.sh
@@ -50,7 +51,6 @@ set t_Co=256            " Enable 256 colors to stop the CSApprox warning and mak
   Plug 'vim-syntastic/syntastic'
   Plug 'vim-scripts/Color-Scheme-Explorer'
   " Plug 'carlosrocha/vim-chrome-devtools'
-  Plug 'maxmellon/vim-jsx-pretty'
   function! BuildTern(info)
     if a:info.status == 'installed' || a:info.force
       !npm install
