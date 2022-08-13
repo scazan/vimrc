@@ -11,30 +11,38 @@ set t_Co=256            " Enable 256 colors to stop the CSApprox warning and mak
 " set term=xterm-256color
 
 " Bundles {
-	set nocompatible              " be iMproved, required
-	filetype off                  " required
+set nocompatible              " be iMproved, required
+filetype off                  " required
 
-  call plug#begin('~/.vim/plugged')
-	" Plug 'scvim'
-	Plug 'elzr/vim-json'
-	Plug 'tpope/vim-fugitive'
-	" Plug 'airblade/vim-gitgutter'
-	Plug 'bling/vim-airline'
-	Plug 'kien/ctrlp.vim'
-	Plug 'mileszs/ack.vim'
-	Plug 'terryma/vim-multiple-cursors'
-	Plug 'flazz/vim-colorschemes'
-	Plug 'vim-airline/vim-airline-themes'
-	Plug 'tpope/vim-surround'
-	Plug 'scrooloose/nerdcommenter'
-	Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'typescript'] }
-  Plug 'leafgarland/typescript-vim', { 'for': ['javascript', 'typescript'] }
-  Plug 'jremmen/vim-ripgrep'
-  " Plug 'Quramy/tsuquyomi'
-  Plug 'Shougo/vimproc.vim'
-	Plug 'hail2u/vim-css3-syntax'
-	Plug 'gorodinskiy/vim-coloresque'
-  Plug 'sheerun/vim-polyglot'
+call plug#begin('~/.vim/plugged')
+Plug 'liuchengxu/vista.vim'
+
+Plug 'ldelossa/litee.nvim'
+Plug 'ldelossa/litee-calltree.nvim'
+
+Plug 'wakatime/vim-wakatime'
+Plug 'posva/vim-vue'
+Plug 'elzr/vim-json'
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+Plug 'bling/vim-airline'
+Plug 'kien/ctrlp.vim'
+Plug 'mileszs/ack.vim'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'flazz/vim-colorschemes'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'tpope/vim-surround'
+Plug 'scrooloose/nerdcommenter'
+Plug 'preservim/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'typescript'] }
+Plug 'leafgarland/typescript-vim', { 'for': ['javascript', 'typescript'] }
+Plug 'jremmen/vim-ripgrep'
+Plug 'Shougo/vimproc.vim'
+Plug 'hail2u/vim-css3-syntax'
+Plug 'gorodinskiy/vim-coloresque'
+Plug 'sheerun/vim-polyglot'
+  Plug 'peitalin/vim-jsx-typescript'
   function! BuildYCM(info)
     if a:info.status == 'installed' || a:info.force
       !./install.sh
@@ -57,17 +65,26 @@ set t_Co=256            " Enable 256 colors to stop the CSApprox warning and mak
     endif
   endfunction
   Plug 'marijnh/tern_for_vim', { 'do': function('BuildTern') }
-  Plug 'davidgranstrom/scnvim'
+  Plug 'davidgranstrom/scnvim', { 'do': {-> scnvim#install() } }
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'rust-lang/rust.vim'
+  Plug 'simrat39/rust-tools.nvim'
+  Plug 'neovim/nvim-lspconfig'
   Plug 'mattn/vim-xxdcursor'
+  Plug 'Eric-Song-Nop/vim-glslx'
+
+  " faust syntax and filetype
+  Plug 'gmoe/vim-faust'
+
+  " Other faust things
+  Plug 'madskjeldgaard/faust-nvim'
 
   call plug#end()
 
+  command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
 
-
-	filetype plugin indent on    " required
-" }
+  filetype plugin indent on    " required
+  " }
 
 set shell=/bin/bash
 
@@ -202,8 +219,10 @@ set undoreload=10000        " Maximum number lines to save for undo on a buffer 
 "	"Remap space to command mode
 	map <space> :
 
+	"Native folder toggle
+	" map <C-e> :Vex<CR> 
 	"NerdTree toggle
-	map <C-e> :Vex<CR>
+  nnoremap <C-e> :NERDTreeToggle<CR>
 
 	" Easier motion for switching between splits (Ctrl-motion)
 	let mapleader = ','
@@ -377,7 +396,11 @@ let g:easytags_languages = {
 \     'recurse_flag': ''
 \   }
 \}
+let g:easytags_auto_update = 0 " this was slowing down vim
 " " }
+
+" vim-vue (fixes the slowness)
+let g:vue_disable_pre_processors = 1
 
 " netrw
 let g:netrw_banner = 0
@@ -398,6 +421,45 @@ let NERDSpaceDelims=1
 
 "let g:sclangTerm="tmux split-window -v -p 20"
 set iskeyword-=.				" periods delimit words
+
+" Rust config
+lua <<EOF
+local nvim_lsp = require'lspconfig'
+
+local opts = {
+    tools = { -- rust-tools options
+        autoSetHints = true,
+        hover_with_actions = true,
+        inlay_hints = {
+            show_parameter_hints = false,
+            parameter_hints_prefix = "",
+            other_hints_prefix = "",
+        },
+    },
+
+    -- all the opts to send to nvim-lspconfig
+    -- these override the defaults set by rust-tools.nvim
+    -- see https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#rust_analyzer
+    server = {
+        -- on_attach is a callback called when the language server attachs to the buffer
+        -- on_attach = on_attach,
+        settings = {
+            -- to enable rust-analyzer settings visit:
+            -- https://github.com/rust-analyzer/rust-analyzer/blob/master/docs/user/generated_config.adoc
+            ["rust-analyzer"] = {
+                -- enable clippy on save
+                checkOnSave = {
+                    command = "clippy"
+                },
+            }
+        }
+    },
+}
+
+require('rust-tools').setup(opts)
+EOF
+
+
 " source an external file for additional config
 if filereadable(expand("~/.vimrc.config"))
 	source ~/.vimrc.config
