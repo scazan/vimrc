@@ -72,6 +72,7 @@ Plug 'sheerun/vim-polyglot'
   Plug 'neovim/nvim-lspconfig'
   Plug 'mattn/vim-xxdcursor'
   Plug 'Eric-Song-Nop/vim-glslx'
+  Plug 'voldikss/vim-floaterm'
 
   " faust syntax and filetype
   Plug 'gmoe/vim-faust'
@@ -467,3 +468,4 @@ endif
 
 set noswapfile
 
+nnoremap <C-\> :copen<CR>
