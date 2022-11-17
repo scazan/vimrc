@@ -80,6 +80,10 @@ Plug 'sheerun/vim-polyglot'
   " Other faust things
   Plug 'madskjeldgaard/faust-nvim'
 
+  " debugger
+  Plug 'mfussenegger/nvim-dap'
+  Plug 'rcarriga/nvim-dap-ui'
+
   call plug#end()
 
   command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
